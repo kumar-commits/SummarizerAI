@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const port = 3000;
+const port = 80;
 const summarizeText = require('./summarize.js');
 
 // Parses JSON bodies (as sent by API clients)
