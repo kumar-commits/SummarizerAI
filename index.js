@@ -7,6 +7,16 @@ const summarizeText = require('./summarize.js');
 // Parses JSON bodies (as sent by API clients)
 app.use(express.json());
 
+
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve the homepage or a default response for the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+
 // Serves static files from the 'public' directory
 app.use(express.static('public'));
 
