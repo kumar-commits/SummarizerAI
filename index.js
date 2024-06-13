@@ -1,8 +1,9 @@
 const express = require('express');
 
 const app = express();
-const port = 80;
+const port = 3000;
 const summarizeText = require('./summarize.js');
+const path = require('path')
 
 // Parses JSON bodies (as sent by API clients)
 app.use(express.json());
@@ -21,13 +22,13 @@ app.get('/', (req, res) => {
 app.use(express.static('public'));
 
 app.post('/summarize', (req, res) => {
- // get the text_to_summarize property from the request body
+  // get the text_to_summarize property from the request body
   const text = req.body.text_to_summarize;
 
- // call your summarizeText function, passing in the text from the request
-  summarizeText(text) 
+  // call your summarizeText function, passing in the text from the request
+  summarizeText(text)
     .then(response => {
-       res.send(response); // Send the summary text as a response to the client
+      res.send(response); // Send the summary text as a response to the client
     })
     .catch(error => {
       console.log(error.message);
